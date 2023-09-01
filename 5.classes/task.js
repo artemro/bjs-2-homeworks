@@ -74,7 +74,9 @@ class Library {
     }
     findBookBy(type, value) {
         this.books.forEach((elem) => {
-            if (elem.type === value) return elem;
+            if (elem[type] === value) {
+                return elem;
+            }
         })
         return null;
     }
