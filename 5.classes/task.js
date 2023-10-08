@@ -73,22 +73,21 @@ class Library {
         }
     }
     findBookBy(type, value) {
-        this.books.forEach((elem) => {
-            if (elem[type] === value) {
-                return elem;
+        for (let book of this.books) {
+            if (book[type] === value) {
+                return book;
             }
-        })
+        }
         return null;
     }
     giveBookByName(bookName) {
-        this.books.forEach((elem) => {
-            if (elem.name === bookName) {
-                this.books.pop(elem);
-                return elem;
+        for (let book of this.books) {
+            if (book.name === bookName) {
+                this.books.pop(book);
+                return book;
             }
-        })
+        }
         return null;
     }
-
 }
 
