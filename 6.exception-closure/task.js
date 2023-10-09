@@ -1,75 +1,49 @@
 ﻿function parseCount(number) {
-    if (isNaN(parseFloat(number))) {
+    let num = parseFloat(number)
+    if (isNaN(num)) {
         throw new Error("Невалидное значение");
     } 
-    else return parseFloat(number);
+    return num;
 }
 
 function validateCount(number) {
     try {
-        parseCount(number);
+        return parseCount(number);
     }
     catch (error) {
         return error;
     }
-    return parseCount(number);
 }
 
 class Triangle {
     constructor (a, b, c) {
-       if (a + b < c || a + c < b || b + c < a) {
-        throw new Error("Треугольник с такими сторонами не существует")
-       } 
-       else {
+        if (a + b < c || a + c < b || b + c < a) {
+            throw new Error("Треугольник с такими сторонами не существует")
+        } 
         this.a = a;
         this.b = b;
         this.c = c;
-        this.p = (a + b + c) / 2;
-       }
     }
     get perimeter () {
-        try {}
-        catch (error) {
-            return "Ошибка! Треугольник не существует"
-        }
-        finally {
-            return this.a + this.b + this.c; 
-        }
+        return this.a + this.b + this.c; 
     };
     get area () {
-        try {}
-        catch (error) {
-            return "Ошибка! Треугольник не существует"
-        }
-        finally {
-            return parseFloat(Math.sqrt(this.p * (this.p - this.a) * (this.p - this.b) * (this.p - this.c)).toFixed(3))
-        }
-
+        let p = this.perimeter / 2;
+        return parseFloat(Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c)).toFixed(3))
     };
 };
 
 
 function getTriangle (a, b, c) {
     if (!(a + b < c || a + c < b || b + c < a)) {
-        const triangle = new Triangle (a, b, c);
-        return triangle;
+        return new Triangle (a, b, c);
     }
-    else {
-        const triangle = {};
-        Object.defineProperty(
-            triangle,
-            "area", 
-            {
-                value: "Ошибка! Треугольник не существует"
-            }
-        );
-        Object.defineProperty(
-            triangle,
-            "perimeter", 
-            {
-                value: "Ошибка! Треугольник не существует"
-            }
-        );
-        return triangle;
-    }
+    return {
+        get perimeter() {
+            return "Ошибка! Треугольник не существует"
+        },
+        get area() {
+            return "Ошибка! Треугольник не существует"
+        }
+    };
 };
