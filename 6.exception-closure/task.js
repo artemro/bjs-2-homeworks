@@ -38,15 +38,12 @@ function getTriangle (a, b, c) {
     if (!(a + b < c || a + c < b || b + c < a)) {
         return new Triangle (a, b, c);
     }
-    else {
-        const triangle = {
-            get perimeter() {
-                return "Ошибка! Треугольник не существует"
-            },
-            get area() {
-                return "Ошибка! Треугольник не существует"
-            }
-        };
-        return triangle;
-    }
+    return {
+        get perimeter() {
+            return "Ошибка! Треугольник не существует"
+        },
+        get area() {
+            return "Ошибка! Треугольник не существует"
+        }
+    };
 };
